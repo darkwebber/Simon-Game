@@ -1,0 +1,72 @@
+body {
+    text-align: center;
+    background-color: #000030;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    margin: 2ex;
+    color: #FFFF8D;
+}
+
+.container {
+    display: flex;
+    height: 100ex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tile {
+    width: 25ex;
+    height: 25ex;
+    background-color: violet;
+    margin: 3ex;
+    border-radius: 3ex;
+    border-style: solid;
+    border-width: 1ex;
+    border-color: black;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.row_1 {
+    display: flex;
+}
+
+.row_2 {
+    display: flex;
+}
+
+@media screen and (max-width: 500px) {
+    .tile {
+        width: 15ex;
+        height: 15ex;
+        margin: 2ex;
+        border-radius: 2ex;
+        border-style: solid;
+        border-width: 1ex;
+        border-color: black;
+    }
+}
+
+@media screen and (min-height: 1000px) {
+    body {
+        text-align: center;
+        background-color: #000030;
+        padding-top: 25%;
+    }
+}
