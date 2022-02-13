@@ -8,10 +8,14 @@ h1 {
     margin: 2ex;
     color: #FFFF8D;
 }
-
+footer{
+    margin-top: 3ex;
+    font-family: 'Sacramento', cursive;
+    color: beige;
+    font-size: 3.5ex;
+}
 .container {
     display: flex;
-    height: 100ex;
     flex-direction: column;
     align-items: center;
 }
@@ -63,10 +67,10 @@ h1 {
     }
 }
 
-@media screen and (min-height: 1000px) {
+@media screen and (min-height: 950px) {
     body {
         text-align: center;
         background-color: #000030;
-        padding-top: 25%;
+        padding-top: 20vh;
     }
 }
