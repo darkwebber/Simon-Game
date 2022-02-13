@@ -6,15 +6,36 @@ const levGen = (levelNo) => {
     }
     return arr;
 };
+const smallWidth = (x) => {
+    if (x.matches) {
+        $("h1").text("Click anywhere on Screen to Start");
+        $(document).click(
+            (event) => {
+                if (i == 0) {
+                    //console.log(event.key);
+                    $("h1").text("Level 1");
+                    level = 1;
+                    setTimeout(
+                        //showPlayer()
+                        levMethod()
+                        , 50);
+                    i += 1;
+                    $(document).unbind();
+                }
+            }
+        );
+    }
+}
 let transitionSound = new Audio("sounds/transition.wav");
 let gameOverSound = new Audio("sounds/gameOver.wav");
 let victory = new Audio("sounds/wonGame.wav");
 let green = new Audio("sounds/clickSounds/green.mp3");
-green.playbackRate = 1.75;
 let yellow = new Audio("sounds/clickSounds/yellow.wav");
 let red = new Audio("sounds/clickSounds/red.mp3");
 let blue = new Audio("sounds/clickSounds/blue.wav");
 let clickSounds = [green, green, yellow, yellow];
+let widthMatch = window.matchMedia("(max-width: 500px)");
+smallWidth(widthMatch);
 let i = 0;//Start and Refresh Controller
 let j = 0;//Input Controller
 let level = 1;//Level Count
@@ -91,6 +112,7 @@ let initHead = $("h1").text();
 $(document).keypress((event) => {
     if (i == 0) {
         console.log(event.key);
+        gameOverSound.load();
         $("h1").text("Level 1");
         level = 1;
         setTimeout(
@@ -118,12 +140,37 @@ const levelUp = (levelNo, result) => {
     }
     if (result == 0) {
         gameOverSound.play();
-        $("h1").text("Game Over,Press any Key to Restart");
+        if (widthMatch.matches) {
+            $("h1").html("Game Over,Click anywhere to Restart");
+        }
+        else {
+            $("h1").html("Game Over,Press any Key to Restart");
+        }
         i = 0;
         j = 0;
         $("body").css("background-color", "red");
         setTimeout(
-            () => { $("body").css("background-color", "#000030"); }, 40
+            () => {
+                $("body").css("background-color", "#000030");
+                if (widthMatch.matches) {
+                    $(document).click(
+                        (event) => {
+                            gameOverSound.load();
+                            if (i == 0) {
+                                //console.log(event.key);
+                                $("h1").text("Level 1");
+                                level = 1;
+                                setTimeout(
+                                    //showPlayer()
+                                    levMethod()
+                                    , 50);
+                                i += 1;
+                                $(document).unbind();
+                            }
+                        }
+                    );
+                }
+            }, 40
         );
     }
 };
